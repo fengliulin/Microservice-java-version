@@ -1,0 +1,22 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-order-service
+  # 配置 zipkin
+  zipkin:
+    baseurl: http://localhost:9411
+  sleuth:
+    sampler:
+      # 采用率值介于 0 到 1 之间，1 则表示全部采集
+      probability: 1
+
+eureka:
+  client:
+    #   将自己注册进EurekaServer
+    register-with-eureka: true
+    #    是否从EurekaServer获取已有的注册信息。 单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/, http://eureka7002.com:7002/eureka/
